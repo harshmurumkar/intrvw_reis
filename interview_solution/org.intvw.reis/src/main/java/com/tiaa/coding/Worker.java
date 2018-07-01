@@ -20,7 +20,7 @@ public class Worker implements Runnable {
 	public void run() {
 		try 
 		{
-			while(this.inventory.getMachines() > 0 && this.inventory.getBolts() > 0) 
+			while(this.inventory.getMachines() > 0 && this.inventory.getBolts() > 1) 
 			{
 				synchronized (lock)
 				{

@@ -18,8 +18,8 @@ public class InventoryDetails  {
 	public long getOverAllTimeToFinishCompleteProduction(int totalWorker) {
 		if(this.getTotalFinishedProducts() > 0)
 		{
-			long remainingProductQuotion =  this.totalFinishedProducts % totalWorker;
-			this.overAllTimeToFinishCompleteProduction = (this.totalFinishedProducts/totalWorker) * this.timeTakenToFinishAProduct + (remainingProductQuotion > 0 ? timeTakenToFinishAProduct : 0);
+			long remainingProductQuotion =  this.totalFinishedProducts % (totalWorker > 0 ? totalWorker : 1);
+			this.overAllTimeToFinishCompleteProduction = (this.totalFinishedProducts/(totalWorker > 0 ? totalWorker : 1)) * this.timeTakenToFinishAProduct + (remainingProductQuotion > 0 ? timeTakenToFinishAProduct : 0);
 		}
 		
 		return this.overAllTimeToFinishCompleteProduction;

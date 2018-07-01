@@ -1,8 +1,8 @@
 package com.tiaa.coding;
 import static org.junit.Assert.assertEquals;
 
-import java.io.BufferedWriter;
-import java.io.OutputStreamWriter;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 
 import org.junit.Test;
 
@@ -12,31 +12,33 @@ public class InventoryTest {
 	
     @Test public void testConsumeInput() {
     	
-    	BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
-        InventoryIfc inv = new Inventory();
+    	String input = "X = 10" + "\n"
+    				+ "Y = 30" + "\n"
+    				+ "N = 40" + "\n";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
         
-        System.out.println("X = " + 10);
-        System.out.println("X = " + 20);
-        System.out.println("N = " + 40);
+        InventoryIfc inv = new Inventory();
         
         InventoryDetails invDetails = inv.consumeInput();
         
         assertEquals(10, invDetails.getMachines());
-        assertEquals(10, invDetails.getMachines());
-        assertEquals(10, invDetails.getMachines());
+        assertEquals(30, invDetails.getBolts());
+        assertEquals(40, invDetails.getTimeTakenToFinishAProduct());
     }
     
-    @Test public void testConsumeInputWithInCorrectData() {
+    @Test(expected = IllegalArgumentException.class)
+    public void testConsumeInputIllegalArgumentException() {
     	
-    	BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
-        InventoryIfc inv = new Inventory();
-        System.out.println("X = " + "*");
-        System.out.println("X = " + 20);
-        System.out.println("N = " + 40);
-        InventoryDetails invDetails = inv.consumeInput();
-        
-        assertEquals(10, invDetails.getMachines());
-        assertEquals(10, invDetails.getMachines());
-        assertEquals(10, invDetails.getMachines());
+    	
+    	String input = "X = *" + "\n"
+				+ "Y = 30" + "\n"
+				+ "N = 40" + "\n";
+    	
+	    InputStream in = new ByteArrayInputStream(input.getBytes());
+	    System.setIn(in);
+	    
+	    InventoryIfc inv = new Inventory();
+	    inv.consumeInput();
     }
 }
