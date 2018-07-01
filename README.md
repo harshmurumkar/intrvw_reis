@@ -11,11 +11,11 @@ JDK Version: java version &quot;1.8.0_151&quot;
 Section 3
 
 a) Sonar lint / EclEmma scan Snapshot
+https://github.com/harshmurumkar/intrvw_reis/blob/master/image_snapshot/TIAA-code-coverage.png
 b) Final Output Snapshot
+https://github.com/harshmurumkar/intrvw_reis/blob/master/image_snapshot/TIAA-Finaloutput.png
 c) Junit Coverage Snapshot
-Note: (You can link directly to the raw version of an image from your image folder. Hence from section
-1.1 if your GIT Link is : https://github.com/nescafe2018/intrvw_sq , then you can have the following
-text in your readme ![SonarLint] (https://github.com/nescafe2018/intrvw_sq/&lt;Link of you image) )
+https://github.com/harshmurumkar/intrvw_reis/blob/master/image_snapshot/TIAA-junit-report.png
 
 Section 4
 
